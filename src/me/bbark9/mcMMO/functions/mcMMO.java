@@ -43,7 +43,7 @@ public class mcMMO {
 			
 			Map<String, Integer> skills = new HashMap<String, Integer>();
 			
-			if(player.isOnline()) {;
+			if(player.isOnline()) {
 				for(SkillType s : SkillType.values()) {
 					int Level = ExperienceAPI.getLevel(player, s.toString());
 					skills.put(s.toString(), Level);
@@ -54,13 +54,15 @@ public class mcMMO {
 					skills.put(s.toString(), Level);
 				}
 			}
+			int total = 0;
 			CArray Skills = new CArray(t);
 			for (Entry<String, Integer> entry : skills.entrySet()) { 
+				total = total + entry.getValue();
 				CString EntryKey = new CString(entry.getKey(), t);
 				CInt EntryInt = new CInt(entry.getValue(), t);
 				Skills.set(EntryKey, EntryInt, t); 
 			}
-			
+			Skills.set(new CString("TOTAL", t), new CInt(total, t), t);
 			return Skills; //Returns Void
 		}
 		
