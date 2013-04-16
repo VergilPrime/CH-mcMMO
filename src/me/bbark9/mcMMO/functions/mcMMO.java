@@ -20,7 +20,7 @@ import com.laytonsmith.core.exceptions.ConfigRuntimeException;
 import com.laytonsmith.core.functions.Exceptions.ExceptionType;
 
 public class mcMMO {
-	
+        
 	public String docs() {
 		return "Function testing for EntityManagement class.";
 	}
@@ -54,13 +54,15 @@ public class mcMMO {
 					skills.put(s.toString(), Level);
 				}
 			}
+            int total = 0;
 			CArray Skills = new CArray(t);
 			for (Entry<String, Integer> entry : skills.entrySet()) { 
+                total = total + entry.getValue();
 				CString EntryKey = new CString(entry.getKey(), t);
 				CInt EntryInt = new CInt(entry.getValue(), t);
 				Skills.set(EntryKey, EntryInt, t); 
 			}
-			
+			Skills.set(CString("Total", t), CInt(total))
 			return Skills; //Returns Void
 		}
 		
