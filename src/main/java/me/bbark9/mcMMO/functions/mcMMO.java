@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import me.bbark9.mcMMO.CHDev;
-import me.bbark9.mcMMO.CHDev.DevFunction;
+import me.bbark9.mcMMO.CHMCMMO;
+import me.bbark9.mcMMO.CHMCMMO.DevFunction;
 
 import org.bukkit.entity.Player;
 
@@ -36,7 +36,7 @@ public class mcMMO {
 		
 		public Construct exec(Target t, Environment environment,
 				Construct... args) throws ConfigRuntimeException {
-			Static.checkPlugin(CHDev.depend, t); 
+			Static.checkPlugin(CHMCMMO.depend, t); 
 			//Player player = Static.GetPlayer(args[0], t);
 			BukkitMCPlayer MCPlayer = (BukkitMCPlayer) Static.GetPlayer(args[0], t);
 			Player player = MCPlayer._Player();

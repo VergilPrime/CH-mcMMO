@@ -9,7 +9,7 @@ import com.laytonsmith.core.events.AbstractEvent;
 import com.laytonsmith.core.events.Driver;
 import com.laytonsmith.core.functions.AbstractFunction;
 
-public class CHDev implements Listener {
+public class CHMCMMO implements Listener {
 	
 	public static String depend = "mcMMO";
 	
