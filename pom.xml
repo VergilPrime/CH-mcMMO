@@ -18,7 +18,8 @@
         <repository>
             <id>sk89q-mvn2</id>
             <url>http://mvn2.sk89q.com/repo</url>
-        </repository>    
+        </repository>
+            
         <repository>
             <id>bukkit-repo</id>
             <url>http://repo.bukkit.org/content/groups/public/</url>
@@ -34,9 +35,10 @@
         <dependency>
             <groupId>com.gmail.nossr50.mcMMO</groupId>
             <artifactId>mcMMO</artifactId>
-            <version>1.4.05</version>
+            <version>1.4.06-dev2</version>
             <type>jar</type>
         </dependency>
+        
         <dependency>
             <groupId>com.sk89q</groupId>
             <artifactId>commandhelper</artifactId>

@@ -1,6 +1,5 @@
 package me.bbark9.mcMMO.events;
 
-import com.gmail.nossr50.events.skills.McMMOPlayerSkillEvent;
 import com.laytonsmith.PureUtilities.Version;
 import com.laytonsmith.annotations.api;
 import com.laytonsmith.core.CHVersion;
@@ -12,14 +11,11 @@ import com.laytonsmith.core.constructs.Target;
 import com.laytonsmith.core.events.AbstractEvent;
 import com.laytonsmith.core.events.BindableEvent;
 import com.laytonsmith.core.events.Driver;
-import com.laytonsmith.core.events.EventUtils;
 import com.laytonsmith.core.exceptions.EventException;
 import com.laytonsmith.core.exceptions.PrefilterNonMatchException;
 import java.util.HashMap;
 import java.util.Map;
 import me.bbark9.mcMMO.abstraction.PlayerSkillEvent;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
 
 /**
  *
