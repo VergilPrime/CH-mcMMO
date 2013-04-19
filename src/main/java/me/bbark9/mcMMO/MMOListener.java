@@ -13,11 +13,11 @@ import org.bukkit.event.Listener;
  *
  * @author import
  */
-public class MCMMOListener implements Listener {
+public class MMOListener implements Listener {
 
     CommandHelperPlugin plugin;
 
-    public MCMMOListener(CommandHelperPlugin plugin) {
+    public MMOListener(CommandHelperPlugin plugin) {
         this.plugin = plugin;
         plugin.registerEvent(this);
     }
@@ -29,7 +29,6 @@ public class MCMMOListener implements Listener {
     @EventHandler
     public void onLevelUp(McMMOPlayerLevelUpEvent event) {
         PlayerSkillEvent e = new PlayerSkillEvent(event);
-        System.out.println("osihaldfh");
         EventUtils.TriggerListener(Driver.EXTENSION, "mcmmo_levelup", e);
     }
 }

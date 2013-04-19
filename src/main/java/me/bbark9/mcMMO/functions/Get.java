@@ -1,45 +1,47 @@
 package me.bbark9.mcMMO.functions;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-
-import me.bbark9.mcMMO.CHMCMMO;
-import me.bbark9.mcMMO.CHMCMMO.DevFunction;
-
-import org.bukkit.entity.Player;
-
 import com.gmail.nossr50.api.ExperienceAPI;
-import com.gmail.nossr50.api.InvalidPlayerException;
+import com.gmail.nossr50.api.exceptions.InvalidPlayerException;
 import com.gmail.nossr50.datatypes.skills.SkillType;
-import com.laytonsmith.abstraction.MCPlayer;
 import com.laytonsmith.abstraction.bukkit.BukkitMCPlayer;
 import com.laytonsmith.annotations.api;
+import com.laytonsmith.core.CHVersion;
 import com.laytonsmith.core.Static;
 import com.laytonsmith.core.constructs.*;
 import com.laytonsmith.core.environments.CommandHelperEnvironment;
 import com.laytonsmith.core.environments.Environment;
 import com.laytonsmith.core.exceptions.ConfigRuntimeException;
+import com.laytonsmith.core.functions.AbstractFunction;
 import com.laytonsmith.core.functions.Exceptions.ExceptionType;
 
-public class mcMMO {
+public class Get {
 
     public String docs() {
-        return "Function testing for EntityManagement class.";
+        return "MCMMO functionality.";
     }
 
     @api
-    public static class mcmmo_get extends DevFunction { //Mob Initate function
+    public static class mcmmo_get extends AbstractFunction {
+        public boolean isRestricted() {
+            return true;
+        }
 
+        public Boolean runAsync() {
+            return false;
+        }
+
+        public CHVersion since() {
+            return CHVersion.V3_3_1;
+        }
+        
         public ExceptionType[] thrown() {
-            // TODO Auto-generated method stub
-            return new ExceptionType[]{ExceptionType.CastException, ExceptionType.BadEntityException};
+            return new ExceptionType[]{};
         }
 
         public Construct exec(Target t, Environment environment,
                 Construct... args) throws ConfigRuntimeException {
             // Make sure mcmmo is installed.
-            Static.checkPlugin(CHMCMMO.depend, t);
+            Static.checkPlugin("mcMMO", t);
 
             BukkitMCPlayer player = null;
 
@@ -56,7 +58,7 @@ public class mcMMO {
                 }
                 // Player is offline, we'll use the given string name later.
             }
-            
+
             CArray skills = new CArray(t);
 
             // Accumulate skills into the skill map.
@@ -69,7 +71,7 @@ public class mcMMO {
                     level = ExperienceAPI.getLevel(player._Player(), skillname.name());
                 } else {
                     String name = args[0].val();
-                    
+
                     try {
                         power = ExperienceAPI.getPowerLevelOffline(name);
                         level = ExperienceAPI.getLevelOffline(name, skillname.toString());
