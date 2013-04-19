@@ -1,7 +1,6 @@
 package me.bbark9.mcMMO;
 
 import com.gmail.nossr50.events.experience.McMMOPlayerLevelUpEvent;
-import com.gmail.nossr50.events.skills.McMMOPlayerSkillEvent;
 import com.laytonsmith.commandhelper.CommandHelperPlugin;
 import com.laytonsmith.core.events.Driver;
 import com.laytonsmith.core.events.EventUtils;
@@ -23,7 +22,7 @@ public class MMOListener implements Listener {
     }
 
     public void unregister() {
-        McMMOPlayerSkillEvent.getHandlerList().unregister(this);
+        McMMOPlayerLevelUpEvent.getHandlerList().unregister(this);
     }
 
     @EventHandler
