@@ -3,50 +3,53 @@ package me.bbark9.mcMMO;
 import org.bukkit.event.Listener;
 import com.laytonsmith.annotations.shutdown;
 import com.laytonsmith.annotations.startup;
+import com.laytonsmith.commandhelper.CommandHelperPlugin;
 import com.laytonsmith.core.CHVersion;
-import com.laytonsmith.core.Static;
 import com.laytonsmith.core.events.AbstractEvent;
 import com.laytonsmith.core.events.Driver;
 import com.laytonsmith.core.functions.AbstractFunction;
+import me.bbark9.mcMMO.events.LevelUp;
 
 public class CHMCMMO implements Listener {
-	
-	public static String depend = "mcMMO";
-	
-	@startup
-	public static void setup() {
-		Static.getLogger().info("Activating ProjectBarks' MCMMO API!");
-		
-	}
-	
-	@shutdown
-	public static void unload() {
-	}
-	
-	
-	public static abstract class DevFunction extends AbstractFunction {
 
-		public boolean isRestricted() {
-			return true;
-		}
+    static MCMMOListener listener;
+    static LevelUp event;
+    public static String depend = "mcMMO";
 
-		public Boolean runAsync() {
-			return false;
-		}
+    @startup
+    public static void setup() {
+        CommandHelperPlugin chp = CommandHelperPlugin.self;
+        listener = new MCMMOListener(chp);
+    }
 
-		public CHVersion since() {
-			return CHVersion.V3_3_1;
-		}
-	}
+    @shutdown
+    public static void unload() {
+        listener.unregister();
+    }
 
-	public static abstract class DevEvent extends AbstractEvent {
+    public static abstract class DevFunction extends AbstractFunction {
 
-		public CHVersion since() {
-			return CHVersion.V3_3_1;
-		}
+        public boolean isRestricted() {
+            return true;
+        }
 
-		public Driver driver() {
-			return Driver.EXTENSION;
-		}
-	}
+        public Boolean runAsync() {
+            return false;
+        }
+
+        public CHVersion since() {
+            return CHVersion.V3_3_1;
+        }
+    }
+
+    public static abstract class DevEvent extends AbstractEvent {
+
+        public CHVersion since() {
+            return CHVersion.V3_3_1;
+        }
+
+        public Driver driver() {
+            return Driver.EXTENSION;
+        }
+    }
 }
