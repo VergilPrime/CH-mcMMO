@@ -23,7 +23,7 @@ public class MCMMOListener implements Listener {
     }
 
     public void unregister() {
-        McMMOPlayerSkillEvent.getHandlerList().unregister(this);
+        McMMOPlayerLevelUpEvent.getHandlerList().unregister(this);
     }
 
     @EventHandler
