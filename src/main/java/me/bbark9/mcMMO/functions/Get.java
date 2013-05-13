@@ -104,4 +104,50 @@ public class Get {
                     + " if the player has not joined the server since McMMO was installed.";
         }
     }
+    
+    @api
+    public static class mcmmo_skills extends AbstractFunction {
+        public boolean isRestricted() {
+            return true;
+        }
+
+        public Boolean runAsync() {
+            return false;
+        }
+
+        public CHVersion since() {
+            return CHVersion.V3_3_1;
+        }
+        
+        public ExceptionType[] thrown() {
+            return new ExceptionType[]{};
+        }
+
+        public Construct exec(Target t, Environment environment,
+                Construct... args) throws ConfigRuntimeException {
+            // Make sure mcmmo is installed.
+            Static.checkPlugin("mcMMO", t);
+
+            CArray skills = new CArray(t);
+            
+            for (SkillType skillname : SkillType.values()) {
+                CString skill = new CString(skillname.name(), t);
+                skills.push(skill);
+            }
+
+            return skills;
+        }
+
+        public String getName() {
+            return "mcmmo_skills"; //Name of function
+        }
+
+        public Integer[] numArgs() {
+            return new Integer[]{0}; //Arguments in function
+        }
+
+        public String docs() {
+            return "array {} Return an array of possible skills.";
+        }
+    }
 }
