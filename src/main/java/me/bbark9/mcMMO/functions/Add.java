@@ -56,14 +56,14 @@ public class Add {
             try {
                 skill = SkillType.valueOf(args[1].val().toUpperCase());
             } catch (Exception e) {
-                throw new ConfigRuntimeException("Unknown McMMO skilltype for mcmmo_add_level, " + args[1].val(), t);
+                throw new ConfigRuntimeException("Unknown McMMO skilltype for mcmmo_add_level, " + args[1].val(), Exceptions.ExceptionType.NotFoundException, t);
             }
             
             if (args.length == 3) {
                 try {
                     amount = Integer.parseInt(args[2].val());
                 } catch (Exception e) {
-                    throw new ConfigRuntimeException("Bad amount for mcmmo_add_level, " + args[2].val(), t);
+                    throw new ConfigRuntimeException("Bad amount for mcmmo_add_level, " + args[2].val(), Exceptions.ExceptionType.RangeException, t);
                 }
             }
             
@@ -115,14 +115,14 @@ public class Add {
             try {
                 skill = SkillType.valueOf(args[1].val().toUpperCase());
             } catch (Exception e) {
-                throw new ConfigRuntimeException("Unknown McMMO skilltype for mcmmo_add_exp, " + args[1].val(), t);
+                throw new ConfigRuntimeException("Unknown McMMO skilltype for mcmmo_add_exp, " + args[1].val(), Exceptions.ExceptionType.RangeException, t);
             }
             
             if (args.length == 3) {
                 try {
                     amount = Integer.parseInt(args[2].val());
                 } catch (Exception e) {
-                    throw new ConfigRuntimeException("Bad amount for mcmmo_add_exp, " + args[2].val(), t);
+                    throw new ConfigRuntimeException("Bad amount for mcmmo_add_exp, " + args[2].val(), Exceptions.ExceptionType.RangeException, t);
                 }
             }
             

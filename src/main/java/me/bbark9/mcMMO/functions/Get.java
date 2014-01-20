@@ -7,7 +7,11 @@ import com.laytonsmith.abstraction.bukkit.BukkitMCPlayer;
 import com.laytonsmith.annotations.api;
 import com.laytonsmith.core.CHVersion;
 import com.laytonsmith.core.Static;
-import com.laytonsmith.core.constructs.*;
+import com.laytonsmith.core.constructs.CArray;
+import com.laytonsmith.core.constructs.CInt;
+import com.laytonsmith.core.constructs.CString;
+import com.laytonsmith.core.constructs.Construct;
+import com.laytonsmith.core.constructs.Target;
 import com.laytonsmith.core.environments.CommandHelperEnvironment;
 import com.laytonsmith.core.environments.Environment;
 import com.laytonsmith.core.exceptions.ConfigRuntimeException;
@@ -57,7 +61,7 @@ public class Get {
                 name = player.getName();
             } catch (ConfigRuntimeException e) {
                 if (args.length == 0) {
-                    throw new ConfigRuntimeException("You need to specify a player.", t);
+                    throw new ConfigRuntimeException("You need to specify a player.", ExceptionType.InsufficientArgumentsException, t);
                 }
                 // Player is offline, we'll use the given string name later.
                 name = args[0].val();
@@ -72,7 +76,7 @@ public class Get {
                 try {
                     power = ExperienceAPI.getPowerLevelOffline(name);
                 } catch (InvalidPlayerException e) {
-                    throw new ConfigRuntimeException("Unknown McMMO player, " + name, t);
+                    throw new ConfigRuntimeException("Unknown McMMO player, " + name, ExceptionType.NotFoundException, t);
                 }
             }
             
@@ -86,7 +90,7 @@ public class Get {
                     try {
                         level = ExperienceAPI.getLevelOffline(name, skillname.toString());
                     } catch (InvalidPlayerException e) {
-                        throw new ConfigRuntimeException("Unknown McMMO player, " + name, t);
+                        throw new ConfigRuntimeException("Unknown McMMO player, " + name, ExceptionType.NotFoundException, t);
                     }
                 }
 
@@ -153,7 +157,7 @@ public class Get {
                 name = player.getName();
             } catch (ConfigRuntimeException e) {
                 if (args.length == 0) {
-                    throw new ConfigRuntimeException("You need to specify a player.", t);
+                    throw new ConfigRuntimeException("You need to specify a player.", ExceptionType.InsufficientArgumentsException, t);
                 }
                 
                 // Player is offline, we'll use the given string name later.
@@ -179,7 +183,7 @@ public class Get {
                     try {
                         level = ExperienceAPI.getOfflineXP(name, skillname.toString());
                     } catch (InvalidPlayerException e) {
-                        throw new ConfigRuntimeException("Unknown McMMO player, " + name, t);
+                        throw new ConfigRuntimeException("Unknown McMMO player, " + name, ExceptionType.NotFoundException, t);
                     }
                 }
 
@@ -244,7 +248,7 @@ public class Get {
                 name = player.getName();
             } catch (ConfigRuntimeException e) {
                 if (args.length == 0) {
-                    throw new ConfigRuntimeException("You need to specify a player.", t);
+                    throw new ConfigRuntimeException("You need to specify a player.", ExceptionType.InsufficientArgumentsException, t);
                 }
                 
                 // Player is offline, we'll use the given string name later.
@@ -268,7 +272,7 @@ public class Get {
                     try {
                         level = ExperienceAPI.getOfflineXPToNextLevel(name, skillname.toString());
                     } catch (InvalidPlayerException e) {
-                        throw new ConfigRuntimeException("Unknown McMMO player, " + name, t);
+                        throw new ConfigRuntimeException("Unknown McMMO player, " + name, ExceptionType.NotFoundException, t);
                     }
                 }
 

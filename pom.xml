@@ -27,7 +27,7 @@
         
         <repository>
             <id>mcmmo</id>
-            <url>http://repo.mcmmo.org/</url>
+            <url>http://repo.md-5.net/content/repositories/snapshots/</url>
         </repository>
     </repositories>
 
@@ -35,7 +35,7 @@
         <dependency>
             <groupId>com.gmail.nossr50.mcMMO</groupId>
             <artifactId>mcMMO</artifactId>
-            <version>1.4.06-dev2</version>
+            <version>1.4.08-SNAPSHOT</version>
             <type>jar</type>
         </dependency>
         
